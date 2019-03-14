@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: CONFIG-SERVER
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ypfect/springcloudConfig/ # Cannot execute request on any known server
+          search-paths: repo
+          username: 363825455@qq.com
+          password: ypfect93
+      label: master
+
+server:
+  port: 7777
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone : http://eureka1:8080/eureka/
+
+
+
+
+
+
