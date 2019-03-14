@@ -11,13 +11,13 @@ spring:
 
 zuul:
   routes:
-     api-user:
+     user:
         path: /api-user/**
         serviceId: USER-CENTER
-     api-pro:
+     pro:
         path: /api-pro/**
         serviceId: PRODUCT-SERVICE
-     api-es:
+     es:
         path: /api-es/**
         serviceId: ELASTICSEARCH
 
