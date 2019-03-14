@@ -1,0 +1,10 @@
+server:
+  port: 9091
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8080/eureka/
+spring:
+  application:
+    name: PRODUCT-SERVICE
+

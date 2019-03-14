@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="auth-center" />
+        <module name="common-base" />
+        <module name="config-server" />
+        <module name="elasticsearch" />
+        <module name="eureka-server" />
+        <module name="feign-center" />
+        <module name="overstar-parent" />
+        <module name="service-product" />
+        <module name="user-center" />
+        <module name="zuul-gateway" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="auth-center" target="1.8" />
+      <module name="common-base" target="1.8" />
+      <module name="config-server" target="1.8" />
+      <module name="elasticsearch" target="1.8" />
+      <module name="eureka-server" target="1.8" />
+      <module name="eureka-server (1)" target="1.8" />
+      <module name="feign-center" target="1.8" />
+      <module name="overstar-parent" target="1.8" />
+      <module name="service-product" target="1.8" />
+      <module name="user-center" target="1.8" />
+      <module name="zuul-gateway" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
