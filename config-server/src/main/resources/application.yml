@@ -6,19 +6,20 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ypfect/springcloudConfig/ # Cannot execute request on any known server
+          uri: https://github.com/ypfect/springcloudConfig # Cannot execute request on any known server
           search-paths: repo
           username: 363825455@qq.com
           password: ypfect93
+          basedir: E:\springcloud\config
       label: master
 
 server:
   port: 7777
 
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone : http://eureka1:8080/eureka/
+eureka:
+  client:
+    service-url:
+      defaultZone : http://eureka1:8080/eureka/
 
 
 
