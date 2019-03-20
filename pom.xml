@@ -5,6 +5,7 @@
     <groupId>com.overstar</groupId>
     <artifactId>overstar-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>overstar-parent</name>
     <description>root</description>
 

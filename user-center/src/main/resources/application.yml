@@ -1,17 +1,17 @@
 server:
   port: 8070
-eureka:
-  client:
-    service-url:
-      defaultZone : http://eureka1:8080/eureka/
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone : http://eureka1:8080/eureka/
 spring:
   application:
     name: USER-CENTER
-  cloud:
-    config:
-      label: master
-      profile: dev
-      uri: http://localhost:7777/
+#  cloud:
+#    config:
+#      label: master
+#      profile: dev
+#      uri: http://localhost:7777/
 
 
 

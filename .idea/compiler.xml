@@ -12,7 +12,6 @@
         <module name="elasticsearch" />
         <module name="eureka-server" />
         <module name="feign-center" />
-        <module name="overstar-parent" />
         <module name="service-product" />
         <module name="user-center" />
         <module name="zuul-gateway" />
