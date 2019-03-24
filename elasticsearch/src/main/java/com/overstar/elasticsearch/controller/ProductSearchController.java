@@ -1,6 +1,6 @@
 package com.overstar.elasticsearch.controller;
 
-import com.overstar.elasticsearch.feign.FeignProductService;
+import com.overstar.elasticsearch.feign.product.FeignProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +28,6 @@ public class ProductSearchController {
         String s = productService.feignHystrixBack();
         return s;
     }
-
 
     @GetMapping("/testHello")
     public String testHello(String test){

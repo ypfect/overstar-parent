@@ -17,24 +17,11 @@ spring:
       max-active: 5
       min-idle: 3
 
-
-spring:
-  datasource:
-    product :
-      url: jdbc:mysql://127.0.0.1:3306/pengfyu?useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
-      username: root
-      password: ypfect92
-
-    user:
-      url: jdbc:mysql://127.0.0.1:3306/pengfyu?useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
-      username: root
-      password: ypfect92
-
-
 mybatis:
-    mapper-locations: classpath:/mybatis/*Mapper.xml
+    mapper-locations: classpath:/mapper/*Mapper.xml
     configuration:
         map-underscore-to-camel-case: true
+
 
 pagehelper:
     helper-dialect: mysql
@@ -42,19 +29,15 @@ pagehelper:
     rowBoundsWithCount: true
     reasonable: true
 
-logging:
-    file: /logs/goods-server.log
-    level:
-        com:
-            choiceness:
-                feigninterface:
-                    remote: debug
-                goodsserver:
-                    dao: debug
-    pattern:
-        console: '%d{yy-MM-dd HH:mm:ss.SSS}--%p--%t--%c--%m%n'
-
-
-
-
+#logging:
+#    file: /logs/goods-server.log
+#    level:
+#        com:
+#            choiceness:
+#                feigninterface:
+#                    remote: debug
+#                goodsserver:
+#                    dao: debug
+#    pattern:
+#        console: '%d{yy-MM-dd HH:mm:ss.SSS}--%p--%t--%c--%m%n'
 

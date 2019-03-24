@@ -1,13 +1,11 @@
 package com.overstar.serviceproduct.controller;
 
-import com.overstar.serviceproduct.dto.ProductBase;
+import com.alibaba.fastjson.JSON;
+import com.overstar.commonbase.bean.RetOverStar;
+import com.overstar.serviceproduct.bean.ProductQuery;
 import com.overstar.serviceproduct.service.ProductBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description
@@ -15,15 +13,22 @@ import java.util.List;
  * @Date 2019/3/20 23:36
  */
 @RestController
-@RequestMapping
+@RequestMapping("/pro")
 public class ProductBaseController {
 
     @Autowired
     private ProductBaseService productBaseService;
 
-    @GetMapping("/getAllPro")
-    public List<ProductBase> getAllProductBases(){
-        return productBaseService.getProductBaseAll();
+    @PostMapping("getAllPro")
+    public RetOverStar getAllProductBases(@RequestBody  ProductQuery query){
+        return RetOverStar.success(productBaseService.getProductBaseAll(query));
+    }
+
+    public static void main(String[] args) {
+        ProductQuery productQuery = new ProductQuery();
+        productQuery.setPageNum(1);
+        productQuery.setSize(25);
+        System.out.println(JSON.toJSONString(productQuery));
     }
 
 }

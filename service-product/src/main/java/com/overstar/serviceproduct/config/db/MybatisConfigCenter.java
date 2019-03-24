@@ -4,7 +4,6 @@ import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +12,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import tk.mybatis.spring.annotation.MapperScan;
 
 import javax.sql.DataSource;
 
@@ -23,21 +23,15 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan(basePackages = "com.overstar.serviceproduct.mapper", sqlSessionTemplateRef = "goodsSqlSessionTemplate")
+@MapperScan(basePackages = "com.overstar.serviceproduct.mapper",sqlSessionTemplateRef = "productSourceSqlSessionTemplate")
 public class MybatisConfigCenter {
 
     @Primary
     @Bean("productSource")
-    @ConfigurationProperties("spring.datasource.product")
+    @ConfigurationProperties("spring.datasource.druid.product")
     public DataSource dataSourceProduct(){
         return DruidDataSourceBuilder.create().build();
     }
-    @Bean("userSource")
-    @ConfigurationProperties("spring.datasource.user")
-    public DataSource dataSourceUser(){
-        return DruidDataSourceBuilder.create().build();
-    }
-
 
     @Primary
     @Bean(name = "productSourceTransactionManager")

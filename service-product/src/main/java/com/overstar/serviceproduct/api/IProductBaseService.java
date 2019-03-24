@@ -1,9 +1,8 @@
 package com.overstar.serviceproduct.api;
 
+import com.overstar.serviceproduct.bean.ProductQuery;
 import com.overstar.serviceproduct.dto.ProductBase;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.overstar.serviceproduct.utils.PageModel;
 
 /**
  * @Description 产品基础服务
@@ -12,5 +11,5 @@ import java.util.List;
  */
 public interface IProductBaseService {
 
-    List<ProductBase> getProductBaseAll();
+    PageModel<ProductBase> getProductBaseAll(ProductQuery query);
 }
