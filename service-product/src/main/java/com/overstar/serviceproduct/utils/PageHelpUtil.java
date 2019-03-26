@@ -1,11 +1,8 @@
 package com.overstar.serviceproduct.utils;
 
 import com.github.pagehelper.PageInfo;
-import org.apache.lucene.util.CollectionUtil;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
