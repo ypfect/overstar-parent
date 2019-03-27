@@ -9,7 +9,7 @@ spring:
     name: PRODUCT-SERVICE
 
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/pengfyu?useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://127.0.0.1:3306/overstar?useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
     username: root
     password: ypfect92
     druid:

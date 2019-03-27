@@ -2,6 +2,8 @@ package com.overstar.serviceproduct.bean;
 
 import com.overstar.commonbase.bean.PageQuery;
 
+import java.util.List;
+
 /**
  * @Description
  * @Author stanley.yu
@@ -11,7 +13,7 @@ public class ProductQuery extends PageQuery {
     private int productId;
     private String productName;
     private int productType;
-    private int status;
+    private List<Integer> productStatus;
 
     public int getProductId() {
         return productId;
@@ -37,11 +39,11 @@ public class ProductQuery extends PageQuery {
         this.productType = productType;
     }
 
-    public int getStatus() {
-        return status;
+    public List<Integer> getProductStatus() {
+        return productStatus;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setProductStatus(List<Integer> productStatus) {
+        this.productStatus = productStatus;
     }
 }

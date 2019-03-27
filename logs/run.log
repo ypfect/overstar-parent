@@ -1,0 +1,226 @@
+ INFO 2019-03-26 21:28:49 [InetUtils.java:170] Cannot determine local hostname 
+ INFO 2019-03-26 21:28:50 [AbstractApplicationContext.java:590] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4f9a2c08: startup date [Tue Mar 26 21:28:50 CST 2019]; root of context hierarchy 
+ INFO 2019-03-26 21:28:50 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ INFO 2019-03-26 21:28:50 [PostProcessorRegistrationDelegate.java:328] Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$18943798] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:28:51 [InetUtils.java:170] Cannot determine local hostname 
+ INFO 2019-03-26 21:28:51 [SpringApplication.java:659] No active profile set, falling back to default profiles: default 
+ INFO 2019-03-26 21:28:51 [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@420745d7: startup date [Tue Mar 26 21:28:51 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4f9a2c08 
+ INFO 2019-03-26 21:28:52 [GenericScope.java:294] BeanFactory id=e0f1d8b8-bdc8-32cb-94c2-e23d2923c26d 
+ INFO 2019-03-26 21:28:52 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ INFO 2019-03-26 21:28:52 [PostProcessorRegistrationDelegate.java:328] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$fc7a349b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:28:52 [PostProcessorRegistrationDelegate.java:328] Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$18943798] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:28:53 [TomcatWebServer.java:91] Tomcat initialized with port(s): 9190 (http) 
+ INFO 2019-03-26 21:28:53 [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 1580 ms 
+ INFO 2019-03-26 21:28:53 [ServletRegistrationBean.java:186] Servlet dispatcherServlet mapped to [/] 
+ INFO 2019-03-26 21:28:53 [ServletRegistrationBean.java:186] Servlet statViewServlet mapped to [/druid/*] 
+ INFO 2019-03-26 21:28:53 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*] 
+ INFO 2019-03-26 21:28:53 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+ INFO 2019-03-26 21:28:53 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+ INFO 2019-03-26 21:28:53 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*] 
+ INFO 2019-03-26 21:28:53 [AbstractFilterRegistrationBean.java:258] Mapping filter: 'webStatFilter' to urls: [/*] 
+ INFO 2019-03-26 21:28:53 [AbstractApplicationContext.java:590] Refreshing FeignContext-product-service: startup date [Tue Mar 26 21:28:53 CST 2019]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@420745d7 
+ INFO 2019-03-26 21:28:53 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ WARN 2019-03-26 21:29:00 [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'elasticsearchStarJob': Unsatisfied dependency expressed through field 'zookeeperRegistryCenter'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'regCenter' defined in class path resource [com/overstar/elasticsearch/job/JobRegistryCenterConfig.class]: Invocation of init method failed; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy 
+ INFO 2019-03-26 21:29:00 [AbstractApplicationContext.java:993] Closing FeignContext-product-service: startup date [Tue Mar 26 21:28:53 CST 2019]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@420745d7 
+ INFO 2019-03-26 21:29:00 [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+ERROR 2019-03-26 21:29:00 [SpringApplication.java:842] Application run failed 
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'elasticsearchStarJob': Unsatisfied dependency expressed through field 'zookeeperRegistryCenter'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'regCenter' defined in class path resource [com/overstar/elasticsearch/job/JobRegistryCenterConfig.class]: Invocation of init method failed; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1350)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:580)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:503)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1255)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1243)
+	at com.overstar.elasticsearch.ElasticsearchApplication.main(ElasticsearchApplication.java:21)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'regCenter' defined in class path resource [com/overstar/elasticsearch/job/JobRegistryCenterConfig.class]: Invocation of init method failed; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:581)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:503)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	... 19 more
+Caused by: java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy
+	at org.apache.curator.framework.CuratorFrameworkFactory$Builder.<init>(CuratorFrameworkFactory.java:147)
+	at org.apache.curator.framework.CuratorFrameworkFactory$Builder.<init>(CuratorFrameworkFactory.java:130)
+	at org.apache.curator.framework.CuratorFrameworkFactory.builder(CuratorFrameworkFactory.java:78)
+	at com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter.init(ZookeeperRegistryCenter.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1776)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1704)
+	... 29 more
+Caused by: java.lang.ClassNotFoundException: org.apache.curator.connection.StandardConnectionHandlingPolicy
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 40 more
+ INFO 2019-03-26 21:38:10 [InetUtils.java:170] Cannot determine local hostname 
+ INFO 2019-03-26 21:38:11 [AbstractApplicationContext.java:590] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@ab7395e: startup date [Tue Mar 26 21:38:11 CST 2019]; root of context hierarchy 
+ INFO 2019-03-26 21:38:11 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ INFO 2019-03-26 21:38:11 [PostProcessorRegistrationDelegate.java:328] Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$cf8a6eff] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:38:12 [InetUtils.java:170] Cannot determine local hostname 
+ INFO 2019-03-26 21:38:12 [SpringApplication.java:659] No active profile set, falling back to default profiles: default 
+ INFO 2019-03-26 21:38:12 [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@31198ceb: startup date [Tue Mar 26 21:38:12 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@ab7395e 
+ INFO 2019-03-26 21:38:13 [GenericScope.java:294] BeanFactory id=e0f1d8b8-bdc8-32cb-94c2-e23d2923c26d 
+ INFO 2019-03-26 21:38:13 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ INFO 2019-03-26 21:38:13 [PostProcessorRegistrationDelegate.java:328] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b3706c02] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:38:13 [PostProcessorRegistrationDelegate.java:328] Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$cf8a6eff] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:38:13 [TomcatWebServer.java:91] Tomcat initialized with port(s): 9190 (http) 
+ INFO 2019-03-26 21:38:14 [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 1592 ms 
+ INFO 2019-03-26 21:38:14 [ServletRegistrationBean.java:186] Servlet dispatcherServlet mapped to [/] 
+ INFO 2019-03-26 21:38:14 [ServletRegistrationBean.java:186] Servlet statViewServlet mapped to [/druid/*] 
+ INFO 2019-03-26 21:38:14 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*] 
+ INFO 2019-03-26 21:38:14 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+ INFO 2019-03-26 21:38:14 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+ INFO 2019-03-26 21:38:14 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*] 
+ INFO 2019-03-26 21:38:14 [AbstractFilterRegistrationBean.java:258] Mapping filter: 'webStatFilter' to urls: [/*] 
+ INFO 2019-03-26 21:38:14 [AbstractApplicationContext.java:590] Refreshing FeignContext-product-service: startup date [Tue Mar 26 21:38:14 CST 2019]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@31198ceb 
+ INFO 2019-03-26 21:38:14 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ WARN 2019-03-26 21:38:17 [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'elasticsearchStarJob': Invocation of init method failed; nested exception is java.lang.NoSuchMethodError: org.apache.curator.framework.api.CreateBuilder.creatingParentsIfNeeded()Lorg/apache/curator/framework/api/ProtectACLCreateModePathAndBytesable; 
+ INFO 2019-03-26 21:38:17 [AbstractApplicationContext.java:993] Closing FeignContext-product-service: startup date [Tue Mar 26 21:38:14 CST 2019]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@31198ceb 
+ INFO 2019-03-26 21:38:17 [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+ERROR 2019-03-26 21:38:17 [SpringApplication.java:842] Application run failed 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'elasticsearchStarJob': Invocation of init method failed; nested exception is java.lang.NoSuchMethodError: org.apache.curator.framework.api.CreateBuilder.creatingParentsIfNeeded()Lorg/apache/curator/framework/api/ProtectACLCreateModePathAndBytesable;
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:138)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:424)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1700)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:581)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:503)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1255)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1243)
+	at com.overstar.elasticsearch.ElasticsearchApplication.main(ElasticsearchApplication.java:21)
+Caused by: java.lang.NoSuchMethodError: org.apache.curator.framework.api.CreateBuilder.creatingParentsIfNeeded()Lorg/apache/curator/framework/api/ProtectACLCreateModePathAndBytesable;
+	at com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter.persist(ZookeeperRegistryCenter.java:218)
+	at com.dangdang.ddframe.job.lite.internal.storage.JobNodeStorage.replaceJobNode(JobNodeStorage.java:160)
+	at com.dangdang.ddframe.job.lite.internal.config.ConfigurationService.persist(ConfigurationService.java:72)
+	at com.dangdang.ddframe.job.lite.internal.schedule.SchedulerFacade.updateJobConfiguration(SchedulerFacade.java:103)
+	at com.dangdang.ddframe.job.lite.api.JobScheduler.init(JobScheduler.java:105)
+	at com.overstar.elasticsearch.job.AbstractJob.start(AbstractJob.java:77)
+	at com.overstar.elasticsearch.job.ElasticsearchStarJob.init(ElasticsearchStarJob.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:365)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:308)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:135)
+	... 18 more
+ INFO 2019-03-26 21:39:35 [InetUtils.java:170] Cannot determine local hostname 
+ INFO 2019-03-26 21:39:35 [AbstractApplicationContext.java:590] Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@27eedb64: startup date [Tue Mar 26 21:39:35 CST 2019]; root of context hierarchy 
+ INFO 2019-03-26 21:39:35 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ INFO 2019-03-26 21:39:35 [PostProcessorRegistrationDelegate.java:328] Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$73a62b1c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:39:37 [InetUtils.java:170] Cannot determine local hostname 
+ INFO 2019-03-26 21:39:37 [SpringApplication.java:659] No active profile set, falling back to default profiles: default 
+ INFO 2019-03-26 21:39:37 [AbstractApplicationContext.java:590] Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4b770e40: startup date [Tue Mar 26 21:39:37 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@27eedb64 
+ INFO 2019-03-26 21:39:38 [GenericScope.java:294] BeanFactory id=e0f1d8b8-bdc8-32cb-94c2-e23d2923c26d 
+ INFO 2019-03-26 21:39:38 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ INFO 2019-03-26 21:39:38 [PostProcessorRegistrationDelegate.java:328] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$578c281f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:39:38 [PostProcessorRegistrationDelegate.java:328] Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$73a62b1c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+ INFO 2019-03-26 21:39:38 [TomcatWebServer.java:91] Tomcat initialized with port(s): 9190 (http) 
+ INFO 2019-03-26 21:39:38 [ServletWebServerApplicationContext.java:285] Root WebApplicationContext: initialization completed in 1597 ms 
+ INFO 2019-03-26 21:39:38 [ServletRegistrationBean.java:186] Servlet dispatcherServlet mapped to [/] 
+ INFO 2019-03-26 21:39:38 [ServletRegistrationBean.java:186] Servlet statViewServlet mapped to [/druid/*] 
+ INFO 2019-03-26 21:39:38 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'characterEncodingFilter' to: [/*] 
+ INFO 2019-03-26 21:39:38 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+ INFO 2019-03-26 21:39:38 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'httpPutFormContentFilter' to: [/*] 
+ INFO 2019-03-26 21:39:38 [AbstractFilterRegistrationBean.java:245] Mapping filter: 'requestContextFilter' to: [/*] 
+ INFO 2019-03-26 21:39:38 [AbstractFilterRegistrationBean.java:258] Mapping filter: 'webStatFilter' to urls: [/*] 
+ INFO 2019-03-26 21:39:39 [AbstractApplicationContext.java:590] Refreshing FeignContext-product-service: startup date [Tue Mar 26 21:39:39 CST 2019]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4b770e40 
+ INFO 2019-03-26 21:39:39 [AutowiredAnnotationBeanPostProcessor.java:154] JSR-330 'javax.inject.Inject' annotation found and supported for autowiring 
+ WARN 2019-03-26 21:39:40 [AbstractApplicationContext.java:558] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'elasticsearchStarJob': Unsatisfied dependency expressed through field 'zookeeperRegistryCenter'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'regCenter' defined in class path resource [com/overstar/elasticsearch/job/JobRegistryCenterConfig.class]: Invocation of init method failed; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy 
+ INFO 2019-03-26 21:39:40 [AbstractApplicationContext.java:993] Closing FeignContext-product-service: startup date [Tue Mar 26 21:39:39 CST 2019]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4b770e40 
+ INFO 2019-03-26 21:39:40 [ConditionEvaluationReportLoggingListener.java:101] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+ERROR 2019-03-26 21:39:40 [SpringApplication.java:842] Application run failed 
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'elasticsearchStarJob': Unsatisfied dependency expressed through field 'zookeeperRegistryCenter'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'regCenter' defined in class path resource [com/overstar/elasticsearch/job/JobRegistryCenterConfig.class]: Invocation of init method failed; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:587)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1350)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:580)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:503)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1255)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1243)
+	at com.overstar.elasticsearch.ElasticsearchApplication.main(ElasticsearchApplication.java:21)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'regCenter' defined in class path resource [com/overstar/elasticsearch/job/JobRegistryCenterConfig.class]: Invocation of init method failed; nested exception is java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:581)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:503)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:251)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1138)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584)
+	... 19 more
+Caused by: java.lang.NoClassDefFoundError: org/apache/curator/connection/StandardConnectionHandlingPolicy
+	at org.apache.curator.framework.CuratorFrameworkFactory$Builder.<init>(CuratorFrameworkFactory.java:147)
+	at org.apache.curator.framework.CuratorFrameworkFactory$Builder.<init>(CuratorFrameworkFactory.java:130)
+	at org.apache.curator.framework.CuratorFrameworkFactory.builder(CuratorFrameworkFactory.java:78)
+	at com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter.init(ZookeeperRegistryCenter.java:72)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1833)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1776)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1704)
+	... 29 more
+Caused by: java.lang.ClassNotFoundException: org.apache.curator.connection.StandardConnectionHandlingPolicy
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 40 more

@@ -2,6 +2,7 @@ package com.overstar.elasticsearch.controller;
 
 import com.overstar.commonbase.bean.RetOverStar;
 import com.overstar.elasticsearch.feign.product.FeignProductService;
+import com.overstar.elasticsearch.service.InitElasticsearchDataService;
 import com.overstar.serviceproduct.bean.ProductQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +22,12 @@ public class ProductBaseController {
     @Autowired
     private FeignProductService productService;
 
+    @Autowired
+    private InitElasticsearchDataService dataService;
+
     @GetMapping("/allPro")
     public RetOverStar findProByProService(@RequestBody ProductQuery query){
         return productService.getAllProductBases(query);
     }
+
 }

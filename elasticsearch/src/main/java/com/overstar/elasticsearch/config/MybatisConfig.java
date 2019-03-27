@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import tk.mybatis.spring.annotation.MapperScan;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ import java.util.Map;
  */
 @Configuration
 @EnableTransactionManagement
+@MapperScan(basePackages = "com.overstar.elasticsearch.mapper")
 public class MybatisConfig {
 
     public static final Logger LOG = LoggerFactory.getLogger(MybatisConfig.class);
