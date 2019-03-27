@@ -7,6 +7,8 @@ import com.overstar.serviceproduct.utils.PageModel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Description
@@ -24,4 +26,7 @@ public interface FeignProductService {
 
     @PostMapping("/pro/getAllPro")
     RetOverStar getAllProductBases(ProductQuery query);
+
+    @RequestMapping("/es/allRes")
+    RetOverStar loadAllResource();
 }

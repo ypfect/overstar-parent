@@ -26,4 +26,9 @@ public class FeignProductServiceBack implements FeignProductService{
     public RetOverStar getAllProductBases(ProductQuery query) {
         return RetOverStar.failure(500,"query producy all by paging failure!");
     }
+
+    @Override
+    public RetOverStar loadAllResource() {
+        return RetOverStar.failure(500,"query all product failure! maybe data is to large..");
+    }
 }

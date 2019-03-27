@@ -8,3 +8,23 @@ spring:
   application:
     name: PRODUCT-SERVICE
 
+  datasource:
+    url: jdbc:mysql://dt1.itrip.com/itrip?useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true
+    username: root
+    password: aoliday
+    druid:
+      initial-size: 3
+      max-active: 5
+      min-idle: 3
+
+mybatis:
+    mapper-locations: classpath:/mapper/*Mapper.xml
+    configuration:
+        map-underscore-to-camel-case: true
+
+
+pagehelper:
+    helper-dialect: mysql
+    offsetAsPageNum: true
+    rowBoundsWithCount: true
+    reasonable: true

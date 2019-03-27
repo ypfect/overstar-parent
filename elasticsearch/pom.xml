@@ -37,6 +37,11 @@
             <version>6.3.2</version>
         </dependency>
         <dependency>
+            <groupId>org.elasticsearch.plugin</groupId>
+            <artifactId>transport-netty4-client</artifactId>
+            <version>6.3.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.overstar</groupId>
             <artifactId>common-base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
@@ -165,8 +170,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-
     </dependencies>
 
     <build>
