@@ -35,5 +35,6 @@
       </foreach>
     </if>
     GROUP BY a.product_id
+    limit 0,500
   </select>
 </mapper>
