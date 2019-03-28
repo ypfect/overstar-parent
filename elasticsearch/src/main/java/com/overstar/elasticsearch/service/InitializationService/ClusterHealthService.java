@@ -1,4 +1,4 @@
-package com.overstar.elasticsearch.service;
+package com.overstar.elasticsearch.service.InitializationService;
 
 import com.overstar.elasticsearch.bean.ClusterHealth;
 import org.elasticsearch.action.admin.cluster.health.ClusterHealthResponse;

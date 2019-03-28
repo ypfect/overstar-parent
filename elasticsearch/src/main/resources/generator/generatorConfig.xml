@@ -57,5 +57,6 @@
 		<table tableName="viewspot"/>
 		<table tableName="supplier"/>
 		<table tableName="product_base"/>
+		<table tableName="tag"/>
 	</context>
 </generatorConfiguration>

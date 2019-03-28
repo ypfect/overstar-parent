@@ -2,6 +2,7 @@ package com.overstar.elasticsearch.service.InitializationService;
 
 import com.github.promeg.pinyinhelper.Pinyin;
 import com.google.common.collect.Sets;
+import com.overstar.elasticsearch.constant.ProductSearchConstant;
 import com.overstar.elasticsearch.dto.City;
 import com.overstar.elasticsearch.mapper.product.CityMapper;
 import org.springframework.beans.factory.InitializingBean;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Set;
 
@@ -26,10 +28,9 @@ public class CityService implements InitializingBean {
     private Set<String > cityNameEn  = Sets.newHashSetWithExpectedSize(300);
     private Set<String > cityNamePinyin  = Sets.newHashSetWithExpectedSize(300);
 
-
     @Override
     public void afterPropertiesSet() throws Exception {
-        List<City> cities = mapper.selectAll();
+        List<City> cities = mapper.loadAllCities(ProductSearchConstant.ONLINE_STATUS);
         for (City city : cities) {
             if (StringUtils.isEmpty(city.getCityNameZh())){
                 continue;

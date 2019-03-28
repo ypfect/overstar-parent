@@ -38,9 +38,7 @@ public class ElasticsearchStarJob extends SimpleJobTemplate {
 	@Override
 	public void executeJob(Integer shardingTotalCount, Integer shardingItem,
 			String itemParameter, String jobParameter) {
-		log.info("起价任务执行开始，计算全平台所有产品起价");
-		System.out.println("***************************************************");
-		log.info("起价任务执行结束，计算全平台所有产品起价");
+		log.info("elastic job is working...");
 	}
 
 }

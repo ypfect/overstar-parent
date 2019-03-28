@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.overstar.elasticsearch.mapper.product.TagMapper">
+    <select id="loadAllTags" resultType="com.overstar.elasticsearch.dto.Tag">
+        SELECT
+        a.tag_id as id,
+        a.tag_name_zh as nameZh
+        FROM
+        tag_entity a,
+        product_base b,
+        tag_entity_mapping c
+        WHERE
+        a.tag_id = c.tag_id
+        AND b.product_id = c.mapping_id
+        AND c.mapping_type = 1
+        AND a.deleted = 0
+        AND b.deleted = 0
+        <if test="productStatus!=null">
+            AND b.product_status IN
+            <foreach collection="productStatus" open="(" close=")" separator="," item="status">
+                #{status}
+            </foreach>
+        </if>
+        GROUP BY
+        a.tag_id
+    </select>
+</mapper>

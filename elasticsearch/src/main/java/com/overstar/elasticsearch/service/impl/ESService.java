@@ -1,4 +1,4 @@
-package com.overstar.elasticsearch.service;
+package com.overstar.elasticsearch.service.impl;
 
 import com.overstar.elasticsearch.api.ElasticSearchService;
 import com.overstar.elasticsearch.bean.EsSearchQuery;

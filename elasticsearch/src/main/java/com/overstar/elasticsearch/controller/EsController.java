@@ -2,7 +2,7 @@ package com.overstar.elasticsearch.controller;
 
 import com.overstar.commonbase.bean.RetOverStar;
 import com.overstar.elasticsearch.bean.ClusterHealth;
-import com.overstar.elasticsearch.service.ClusterHealthService;
+import com.overstar.elasticsearch.service.InitializationService.ClusterHealthService;
 import com.overstar.elasticsearch.service.InitializationService.CityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
