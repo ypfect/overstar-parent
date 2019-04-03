@@ -2,6 +2,7 @@ package com.overstar.elasticsearch.utils;
 
 import com.overstar.elasticsearch.constant.ProductSearchConstant;
 import org.elasticsearch.action.admin.indices.alias.get.GetAliasesResponse;
+import org.elasticsearch.action.admin.indices.get.GetIndexResponse;
 import org.elasticsearch.action.bulk.BulkProcessor;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class ElasticsearchOpService {
     @Autowired
     private TransportClient transportClient;
 
-    /**
+    /**.
      * 根据别名获取索引列表
      * @param aliases
      * @return
@@ -46,7 +48,7 @@ public class ElasticsearchOpService {
             for (AliasMetaData metaDatum : aliasMetaData) {
                 String alias = metaDatum.getAlias();
                 if (alias.equals(aliases)){
-                    indexes.add(alias);
+                    indexes.add(key);
                     break;
                 }
             }
@@ -68,7 +70,7 @@ public class ElasticsearchOpService {
 
             @Override
             public void afterBulk(long l, BulkRequest bulkRequest, Throwable throwable) {
-
+                LoggerFactory.getLogger("es").info("bulkProcessing end...");
             }
         });
         return es.setBulkActions(10000).setConcurrentRequests(0).build();
@@ -83,10 +85,64 @@ public class ElasticsearchOpService {
                 .addMapping(ProductSearchConstant.TYPE, ProductSearchConstant.Index.MAPPINGS, XContentType.JSON).execute().actionGet();
     }
 
+
+    /**
+     * 删除指定索引的别名
+     */
+    public void deleteAliases(String index, String alias) {
+        transportClient.admin().indices().prepareAliases().removeAlias(index, alias).execute().actionGet();
+    }
+
     /**
      * 删除索引
      */
     public void deleteIndex(String... indexes) {
         transportClient.admin().indices().prepareDelete(indexes).execute().actionGet();
+    }
+
+    public void addIntoAliases(String currentIndex,String aliases){
+        transportClient.admin().indices().prepareAliases().addAlias(currentIndex,aliases).execute().actionGet();
+    }
+
+    /**
+     * 删除该别名下面的老的index，新增新的index
+     * @param oldIndex
+     * @param newIndex
+     * @param aliases
+     */
+    public void insertNewDeleteOld(String[] oldIndex,String newIndex,String aliases){
+        transportClient.admin().indices().prepareAliases().removeAlias(oldIndex,aliases).addAlias(newIndex,aliases).execute().actionGet();
+    }
+
+    /**
+     * 获取所有的索引
+     * @return
+     */
+    public List<String> getAllIndexesName(){
+        GetIndexResponse getIndexResponse = transportClient.admin().indices().prepareGetIndex().execute().actionGet();
+        String[] indices = getIndexResponse.indices();
+        return Arrays.asList(indices);
+    }
+
+
+    /**
+     * 根据索引查询别名
+     * @param indexName
+     * @return
+     */
+    public String getAliasesNameByIndex(String indexName) {
+        GetAliasesResponse aliasesResponse = transportClient.admin().indices().prepareGetAliases().execute().actionGet();
+        //获取的map aliases,list<index>
+        ImmutableOpenMap<String, List<AliasMetaData>> aliasesMap = aliasesResponse.getAliases();
+        Iterator<String> aliasesKeys = aliasesMap.keysIt();
+        while (aliasesKeys.hasNext()){
+            String aliases = aliasesKeys.next();
+            List<AliasMetaData> aliasMetaData = aliasesMap.get(aliases);
+            for (AliasMetaData aliasMetaDatum : aliasMetaData) {
+//                aliasMetaDatum.
+            }
+        }
+        return null;
+
     }
 }

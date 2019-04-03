@@ -24,6 +24,11 @@ public class RetOverStar {
         RetOverStar ret = new RetOverStar(true,msg,data,code);
         return  ret;
     }
+
+    public static RetOverStar sucess(int code,  Object data){
+        RetOverStar ret = new RetOverStar(true,"eat",data,code);
+        return  ret;
+    }
     public static RetOverStar failure(int code, String msg){
         RetOverStar ret = new RetOverStar(false,msg,code);
         return  ret;

@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.*;
@@ -33,18 +34,58 @@ public class YouKnow4SearchService {
     @Autowired
     private InitElasticsearchDataService initElasticsearchDataService;
 
-    public void initEsIndex(){
-        List<ProductDocument> productDocuments = initElasticsearchDataService.iiiinitProData4Es(null);
+    /**
+     * 索引数据
+     * 查询数据，利用别名悄然更新数据
+     * 里面bulkProcessor 进行批量的高效处理数据的插入
+     * @return
+     */
+    public int initEsIndex(){
+        BulkProcessor bulkProcessor = null;
         long time = System.currentTimeMillis();
-        logger.info("根据别名获取索引集合..");
-        List<String> es = opService.getIndexesByAliases(ProductSearchConstant.INDEX_OVERSTAR);
-        logger.info("old indexes {}",es.toString());
-        String indexNameNew = generateIndex(ProductSearchConstant.INDEX_OVERSTAR);
-        //给新索引批量插入数据
-        BulkProcessor bulkProcessor = opService.createBulkProcessor();
-        for (ProductDocument document : productDocuments) {
-            bulkProcessor.add(new IndexRequest(indexNameNew, ProductSearchConstant.TYPE, document.getProductId()).source(getJsonMap(document, false)));
+        try {
+            List<ProductDocument> productDocuments = initElasticsearchDataService.iiiinitProData4Es(null);
+            logger.info("根据别名获取索引集合..");
+            List<String> oldIndex = opService.getIndexesByAliases(ProductSearchConstant.INDEX_OVERSTAR);
+            logger.info("old indexes {}",oldIndex.toString());
+            String indexNameNew = generateIndex(ProductSearchConstant.INDEX_OVERSTAR);
+            logger.info("new index name is {}",indexNameNew);
+            //给新索引批量插入数据
+            bulkProcessor = opService.createBulkProcessor();
+            for (ProductDocument document : productDocuments) {
+                bulkProcessor.add(new IndexRequest(indexNameNew, ProductSearchConstant.TYPE, document.getProductId()).source(getJsonMap(document, false)));
+            }
+            bulkProcessor.flush();
+            if (!CollectionUtils.isEmpty(oldIndex)){
+                String[] oldIndexes = oldIndex.toArray(new String[]{});
+                logger.info("exchange oldIndex {} to del & insert new {} into ",oldIndexes,indexNameNew);
+                opService.insertNewDeleteOld(oldIndexes,indexNameNew,ProductSearchConstant.INDEX_OVERSTAR);
+                logger.info("delete old index ..{}",oldIndex);
+                opService.deleteIndex(oldIndexes);
+            }else {
+                logger.info("there has no index named {},go ahead to insert {} to aliases",ProductSearchConstant.INDEX_OVERSTAR,indexNameNew);
+                opService.addIntoAliases(indexNameNew,ProductSearchConstant.INDEX_OVERSTAR);
+            }
+            logger.info("reIndex[ {} ] success.", ProductSearchConstant.INDEX_OVERSTAR);
+            logger.info("reIndex[ {} ] end, spend[{}]ms.", ProductSearchConstant.INDEX_OVERSTAR, (System.currentTimeMillis() - time));
+            return productDocuments.size();
+        }catch (Exception e){
+            logger.info("init Aliases failure ..."+e);
+            return 0;
+        }finally {
+            if (bulkProcessor != null){
+                bulkProcessor.close();
+            }
         }
+
+    }
+
+    public static void main(String[] args) {
+        List<String> ss = new ArrayList<>();
+        ss.add("asdas");
+        ss.add("eeee");
+        ss.add("fsdsfa");
+        String[] strings = ss.toArray(new String[]{});
     }
 
 
