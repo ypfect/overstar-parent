@@ -152,6 +152,10 @@ public class YouKnow4SearchService {
         Map<String, Object> result = new HashMap<>();
         String productNameZh = safeSource(QueryParser.escape(toB ? ESStringUtil.clearItripAolidayPromotion(document.getProductNameZh()) : document.getProductNameZh()),
                 "productNameZh", result);
+        String productNameZhPy = safeSource(QueryParser.escape(toB ?
+                        ESStringUtil.clearItripAolidayPromotion(Pinyin.toPinyin(document.getProductNameZh()," ").replace(" ",""))
+                        : Pinyin.toPinyin(document.getProductNameZh()," ").replace(" ","")),
+                "productNameZhPy", result);
         safeSource(toB ? ESStringUtil.clearItripAolidayPromotion(document.getProductNameEn()) : document.getProductNameEn(), "productNameEn", result);
         safeSource(toB ? ESStringUtil.clearItripAolidayPromotion(document.getProductNameEn()) : document.getProductNameEn(), "productNameEnNotAnalyzed",
                 result);
@@ -171,6 +175,9 @@ public class YouKnow4SearchService {
         List<Map<String, Object>> suggest = new ArrayList<>();
         if (countryNameZhs != null) {
             suggest.add(getSuggestMap(countryNameZhs, 80));
+        }
+        if (productNameZhPy != null) {
+            suggest.add(getSuggestMap(productNameZhPy, 60));
         }
         if (cityNameZhs != null) {
             suggest.add(getSuggestMap(cityNameZhs, 40));

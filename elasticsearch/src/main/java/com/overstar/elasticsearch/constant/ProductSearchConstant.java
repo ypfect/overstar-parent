@@ -26,162 +26,172 @@ public interface ProductSearchConstant {
     // ~ settings & mapping
     // ====================================================================================================================
     interface Index {
-        String SETTINGS = "{\r\n" +
-                "        \"index\" : {\r\n" +
-                "            \"number_of_shards\" : 5,\r\n" +
-                "            \"number_of_replicas\" : 1\r\n" +
-                "        },\r\n" +
-                "        \"analysis\": {\r\n" +
-                "			\"analyzer\": {\r\n" +
-                "		        \"autocomplete\": {\r\n" +
-                "					\"tokenizer\": \"keyword\",\r\n" +
-                "					\"filter\": [\r\n" +
-                "			            \"pinyin\",\r\n" +
-                "			            \"lowercase\",\r\n" +
-                "			            \"cjk_width\"\r\n" +
-                "					]\r\n" +
-                "		        },\r\n" +
-                "		        \"first_py_letter_analyzer\": {\r\n" +
-                "                    \"tokenizer\": \"first_py_letter\",\r\n" +
-                "					\"filter\":\"edgeNGram\"\r\n" +
-                "                },\r\n" +
-                "                \"full_pinyin_letter_analyzer\": {\r\n" +
-                "                    \"tokenizer\": \"full_pinyin_letter\"\r\n" +
-                "                },\r\n" +
-                "                \"ik_smart_synonym\" : {\r\n" +
-                "                	\"tokenizer\": \"ik_smart\",\r\n" +
-                "                	\"filter\" : \"graph_synonyms\"\r\n" +
-                "                },\r\n" +
-                "                \"ik_maxword_synonym\" : {\r\n" +
-                "                	\"tokenizer\": \"ik_max_word\",\r\n" +
-                "                	\"filter\" : \"graph_synonyms\"\r\n" +
-                "                }\r\n" +
-                "			},\r\n" +
-                "			\"tokenizer\" : {\r\n" +
-                "                \"first_py_letter\": {\r\n" +
-                "                    \"type\" : \"pinyin\",\r\n" +
-                "                    \"keep_first_letter\" : true,\r\n" +
-                "                    \"keep_full_pinyin\" : false,\r\n" +
-                "                    \"keep_original\" : false,\r\n" +
-                "                    \"limit_first_letter_length\" : 16,\r\n" +
-                "                    \"lowercase\" : true,\r\n" +
-                "                    \"trim_whitespace\" : true,\r\n" +
-                "                    \"keep_none_chinese_in_first_letter\": false,\r\n" +
-                "                    \"none_chinese_pinyin_tokenize\": false,\r\n" +
-                "                    \"keep_none_chinese\": true,\r\n" +
-                "                    \"keep_none_chinese_in_joined_full_pinyin\": true\r\n" +
-                "                },\r\n" +
-                "                \"full_pinyin_letter\": {\r\n" +
-                "                    \"type\" : \"pinyin\",\r\n" +
-                "                    \"keep_first_letter\" : false,\r\n" +
-                "                    \"keep_full_pinyin\" : true,\r\n" +
-                "                    \"keep_none_chinese\" : true,\r\n" +
-                "                    \"keep_separate_first_letter\" : true,\r\n" +
-                "                    \"keep_original\" : false,\r\n" +
-                "                    \"limit_first_letter_length\" : 16,\r\n" +
-                "                    \"lowercase\" : true,\r\n" +
-                "                    \"trim_whitespace\" : true,\r\n" +
-                "                    \"keep_none_chinese_in_first_letter\" : true\r\n" +
-                "                }\r\n" +
-                "            },\r\n" +
-                "            \"filter\":{\r\n" +
-                "				\"edgeNGram\":{\r\n" +
-                "					\"type\": \"edgeNGram\",\r\n" +
-                "					\"min_gram\": 2,\r\n" +
-                "					\"max_gram\": 15,\r\n" +
-                "					\"token_chars\": [\"letter\", \"digit\"]\r\n" +
-                "				},\r\n" +
-                "				\"graph_synonyms\": {\r\n" +
-                "					\"type\": \"synonym_graph\",\r\n" +
-                "            		\"synonyms_path\": \"synonym.txt\"\r\n" +
-                "				}				\r\n" +
-                "			}\r\n" +
-                "		}\r\n" +
+        String SETTINGS ="{\n" +
+                "        \"index\" : {\n" +
+                "            \"number_of_shards\" : 5,\n" +
+                "            \"number_of_replicas\" : 1\n" +
+                "        },\n" +
+                "        \"analysis\": {\n" +
+                "\t\t\t\"analyzer\": {\n" +
+                "\t\t        \"autocomplete\": {\n" +
+                "\t\t\t\t\t\"tokenizer\": \"keyword\",\n" +
+                "\t\t\t\t\t\"filter\": [\n" +
+                "\t\t\t            \"pinyin\",\n" +
+                "\t\t\t            \"lowercase\",\n" +
+                "\t\t\t            \"cjk_width\"\n" +
+                "\t\t\t\t\t]\n" +
+                "\t\t        },\n" +
+                "\t\t        \"first_py_letter_analyzer\": {\n" +
+                "                    \"tokenizer\": \"first_py_letter\",\n" +
+                "\t\t\t\t\t\"filter\":\"edgeNGram\"\n" +
+                "                },\n" +
+                "                \"full_pinyin_letter_analyzer\": {\n" +
+                "                    \"tokenizer\": \"full_pinyin_letter\",\n" +
+                "                    \"filter\":\"edgeNGram\"\n" +
+                "                },\n" +
+                "                \"full_pinyin_letter_analyzer-test\": {\n" +
+                "                   \"tokenizer\": \"keyword\",\n" +
+                "                   \"filter\":[\"edgeNGram\", \"lowercase\"]\n" +
+                "                },\n" +
+                "                \"ik_smart_synonym\" : {\n" +
+                "                \t\"tokenizer\": \"ik_smart\",\n" +
+                "                \t\"filter\" : \"graph_synonyms\"\n" +
+                "                },\n" +
+                "                \"ik_maxword_synonym\" : {\n" +
+                "                \t\"tokenizer\": \"ik_max_word\",\n" +
+                "                \t\"filter\" : \"graph_synonyms\"\n" +
+                "                }\n" +
+                "\t\t\t},\n" +
+                "\t\t\t\"tokenizer\" : {\n" +
+                "                \"first_py_letter\": {\n" +
+                "                    \"type\" : \"pinyin\",\n" +
+                "                    \"keep_first_letter\" : true,\n" +
+                "                    \"keep_full_pinyin\" : false,\n" +
+                "                    \"keep_original\" : false,\n" +
+                "                    \"limit_first_letter_length\" : 16,\n" +
+                "                    \"lowercase\" : true,\n" +
+                "                    \"trim_whitespace\" : true,\n" +
+                "                    \"keep_none_chinese_in_first_letter\": false,\n" +
+                "                    \"none_chinese_pinyin_tokenize\": false,\n" +
+                "                    \"keep_none_chinese\": true,\n" +
+                "                    \"keep_none_chinese_in_joined_full_pinyin\": true\n" +
+                "                },\n" +
+                "                \"full_pinyin_letter\": {\n" +
+                "                    \"type\" : \"pinyin\",\n" +
+                "                    \"keep_first_letter\" : false,\n" +
+                "                    \"keep_full_pinyin\" : true,\n" +
+                "                    \"keep_none_chinese\" : true,\n" +
+                "                    \"keep_separate_first_letter\" : true,\n" +
+                "                    \"keep_original\" : false,\n" +
+                "                    \"limit_first_letter_length\" : 16,\n" +
+                "                    \"lowercase\" : true,\n" +
+                "                    \"trim_whitespace\" : true,\n" +
+                "                    \"keep_none_chinese_in_first_letter\" : true\n" +
+                "                }\n" +
+                "            },\n" +
+                "            \"filter\":{\n" +
+                "\t\t\t\t\"edgeNGram\":{\n" +
+                "\t\t\t\t\t\"type\": \"edgeNGram\",\n" +
+                "\t\t\t\t\t\"min_gram\": 2,\n" +
+                "\t\t\t\t\t\"max_gram\": 15,\n" +
+                "\t\t\t\t\t\"token_chars\": [\"letter\", \"digit\"]\n" +
+                "\t\t\t\t},\n" +
+                "\t\t\t\t\"graph_synonyms\": {\n" +
+                "\t\t\t\t\t\"type\": \"synonym_graph\",\n" +
+                "            \t\t\"synonyms_path\": \"synonym.txt\"\n" +
+                "\t\t\t\t}\t\t\t\t\n" +
+                "\t\t\t}\n" +
+                "\t\t}\n" +
                 "    }";
 
-        String MAPPINGS = "{\r\n" +
-                "	    \"_doc\" : {\r\n" +
-                "			\"properties\" : {\r\n" +
-                "				\"productNameZh\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\": true,\r\n" +
-                "					\"fields\": {\r\n" +
-                "                        \"ik\": {\r\n" +
-                "                            \"type\": \"text\",\r\n" +
-                "                            \"analyzer\": \"ik_maxword_synonym\",\r\n" +
-                "							\"search_analyzer\": \"ik_smart_synonym\"\r\n" +
-                "                        },\r\n" +
-                "                        \"pinyin\": {\r\n" +
-                "                            \"type\": \"text\",\r\n" +
-                "                            \"analyzer\": \"full_pinyin_letter_analyzer\"\r\n" +
-                "                        },\r\n" +
-                "                        \"first_py\": {\r\n" +
-                "                            \"type\": \"text\",\r\n" +
-                "                            \"analyzer\": \"first_py_letter_analyzer\"\r\n" +
-                "                        }\r\n" +
-                "                    }\r\n" +
-                "			    },\r\n" +
-                "			    \"productNameEn\" : {\r\n" +
-                "					\"type\" :   \"text\",\r\n" +
-                "					\"analyzer\": \"ik_max_word\",\r\n" +
-                "					\"search_analyzer\": \"ik_max_word\"\r\n" +
-                "			    },\r\n" +
-                "			    \"productNameEnNotAnalyzed\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"tagNamesZh\" : {\r\n" +
-                "					\"type\" : \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"tagNamesPy\" : {\r\n" +
-                "					\"type\" : \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"countryNameZh\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"countryNamePy\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"countryNameEn\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"cityNameZh\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"cityNamePy\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"cityNameEn\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"viewspotsZh\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"viewspotsPy\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"supplierName\" : {\r\n" +
-                "					\"type\" :   \"keyword\",\r\n" +
-                "					\"index\" : true\r\n" +
-                "			    },\r\n" +
-                "			    \"suggestText\": {\r\n" +
-                "			    	\"type\": \"completion\",\r\n" +
-                "                    \"analyzer\": \"autocomplete\",\r\n" +
-                "					\"search_analyzer\": \"autocomplete\",\r\n" +
-                "					\"preserve_separators\": true\r\n" +
-                "				}\r\n" +
-                "			}\r\n" +
-                "	    }\r\n" +
-                "	}";
+        String MAPPINGS = "{\n" +
+                "\t    \"_doc\" : {\n" +
+                "\t\t\t\"properties\" : {\n" +
+                "\t\t\t\t\"productNameZh\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\": true,\n" +
+                "\t\t\t\t\t\"fields\": {\n" +
+                "                        \"ik\": {\n" +
+                "                            \"type\": \"text\",\n" +
+                "                            \"analyzer\": \"ik_maxword_synonym\",\n" +
+                "\t\t\t\t\t\t\t\"search_analyzer\": \"ik_smart_synonym\"\n" +
+                "                        },\n" +
+                "                        \"pinyin\": {\n" +
+                "                            \"type\": \"text\",\n" +
+                "                            \"analyzer\": \"full_pinyin_letter_analyzer\"\n" +
+                "                        },\n" +
+                "                        \"first_py\": {\n" +
+                "                            \"type\": \"text\",\n" +
+                "                            \"analyzer\": \"first_py_letter_analyzer\"\n" +
+                "                        }\n" +
+                "                    }\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"productNameZhPy\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"text\",\n" +
+                "\t\t\t\t\t\"analyzer\": \"full_pinyin_letter_analyzer-test\",\n" +
+                "\t\t\t\t\t\"search_analyzer\": \"full_pinyin_letter_analyzer-test\"\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"productNameEn\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"text\",\n" +
+                "\t\t\t\t\t\"analyzer\": \"ik_max_word\",\n" +
+                "\t\t\t\t\t\"search_analyzer\": \"ik_max_word\"\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"productNameEnNotAnalyzed\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"tagNamesZh\" : {\n" +
+                "\t\t\t\t\t\"type\" : \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"tagNamesPy\" : {\n" +
+                "\t\t\t\t\t\"type\" : \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"countryNameZh\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"countryNamePy\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"countryNameEn\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"cityNameZh\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"cityNamePy\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"cityNameEn\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"viewspotsZh\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"viewspotsPy\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"supplierName\" : {\n" +
+                "\t\t\t\t\t\"type\" :   \"keyword\",\n" +
+                "\t\t\t\t\t\"index\" : true\n" +
+                "\t\t\t    },\n" +
+                "\t\t\t    \"suggestText\": {\n" +
+                "\t\t\t    \t\"type\": \"completion\",\n" +
+                "                    \"analyzer\": \"autocomplete\",\n" +
+                "\t\t\t\t\t\"search_analyzer\": \"autocomplete\",\n" +
+                "\t\t\t\t\t\"preserve_separators\": true\n" +
+                "\t\t\t\t}\n" +
+                "\t\t\t}\n" +
+                "\t    }\n" +
+                "\t}";
     }
 }
