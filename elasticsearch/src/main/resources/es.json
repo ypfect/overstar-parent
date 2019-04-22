@@ -1,0 +1,181 @@
+{	"settings" : {
+        "index" : {
+            "number_of_shards" : 5,
+            "number_of_replicas" : 1
+        },
+        "analysis": {
+			"analyzer": {
+		        "autocomplete": {
+					"tokenizer": "keyword",
+					"filter": [
+			            "pinyin",
+			            "lowercase",
+			            "cjk_width"
+					]
+		        },
+		        "first_py_letter_analyzer": {
+                    "tokenizer": "first_py_letter",
+					"filter":"edgeNGram"
+                },
+                "full_pinyin_letter_analyzer": {
+                    "tokenizer": "full_pinyin_letter",
+                    "filter":"edgeNGram"
+                },
+                "full_pinyin_edgeNGram": {
+                   "tokenizer": "keyword",
+                   "filter":["edgeNGram", "lowercase"]
+                },
+                "ik_smart_synonym" : {
+                	"tokenizer": "ik_smart",
+                	"filter" : "graph_synonyms"
+                },
+                "ik_max_word_synonym" : {
+                	"tokenizer": "ik_max_word",
+                	"filter" : "graph_synonyms"
+                }
+			},
+			"tokenizer" : {
+                "first_py_letter": {
+                    "type" : "pinyin",
+                    "keep_first_letter" : true,
+                    "keep_full_pinyin" : false,
+                    "keep_original" : false,
+                    "limit_first_letter_length" : 16,
+                    "lowercase" : true,
+                    "trim_whitespace" : true,
+                    "keep_none_chinese_in_first_letter": false,
+                    "none_chinese_pinyin_tokenize": false,
+                    "keep_none_chinese": true,
+                    "keep_none_chinese_in_joined_full_pinyin": true
+                },
+                "full_pinyin_letter": {
+                    "type" : "pinyin",
+                    "keep_first_letter" : false,
+                    "keep_full_pinyin" : true,
+                    "keep_none_chinese" : true,
+                    "keep_separate_first_letter" : true,
+                    "keep_original" : false,
+                    "limit_first_letter_length" : 16,
+                    "lowercase" : true,
+                    "trim_whitespace" : true,
+                    "keep_none_chinese_in_first_letter" : true
+                }
+            },
+            "filter":{
+				"edgeNGram":{
+					"type": "edgeNGram",
+					"min_gram": 2,
+					"max_gram": 15,
+					"token_chars": ["letter", "digit"]
+				},
+				"graph_synonyms": {
+					"type": "synonym_graph",
+            		"synonyms_path": "synonym.txt"
+				}				
+			}
+		}
+    },
+	"mappings": {
+	    "_doc" : {
+			"properties" : {
+				"productNameZh" : {
+					"type" :   "keyword",
+					"index": true,
+					"fields": {
+                        "ik": {
+                            "type": "text",
+                            "analyzer": "ik_max_word_synonym",
+							"search_analyzer": "ik_smart_synonym"
+                        },
+                        "pinyin": {
+                            "type": "text",
+                            "analyzer": "full_pinyin_letter_analyzer"
+                        },
+                        "first_py": {
+                            "type": "text",
+                            "analyzer": "first_py_letter_analyzer"
+                        }
+                    }
+			    },
+			    "productNameZhPy" : {
+					"type" :   "text",
+					"analyzer": "full_pinyin_edgeNGram",
+					"search_analyzer": "keyword"
+			    },
+			    "productNameEn" : {
+					"type" :   "text",
+					"analyzer": "letter",
+					"search_analyzer": "letter"
+			    },
+			    "productNameEnNotAnalyzed" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "tagNamesZh" : {
+					"type" : "keyword",
+					"index" : true
+			    },
+			    "tagNamesPy" : {
+					"type" : "keyword",
+					"index" : true
+			    },
+			    "countryNameZh" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "countryNamePy" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "countryNameEn" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "cityNameZh" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "cityNamePy" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "cityNameEn" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "viewspotsZh" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "viewspotsPy" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "supplierName" : {
+					"type" :   "keyword",
+					"index" : true
+			    },
+			    "suggestText": {
+			    	"type": "completion",
+                    "analyzer": "autocomplete",
+					"search_analyzer": "autocomplete",
+					"preserve_separators": true
+				}
+			}
+	    }
+	}
+}
+
+
+
+
+			    
+
+
+
+
+
+
+
+
+

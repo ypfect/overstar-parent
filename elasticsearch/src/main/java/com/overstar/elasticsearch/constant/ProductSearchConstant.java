@@ -23,7 +23,7 @@ public interface ProductSearchConstant {
     String INDEX_OVERSTAR = "overstar";
 
 
-    // ~ settings & mapping
+    // ~ es-settings & mapping
     // ====================================================================================================================
     interface Index {
         String SETTINGS ="{\n" +

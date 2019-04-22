@@ -1,5 +1,9 @@
 package com.overstar.elasticsearch.utils;
 
+import com.alibaba.fastjson.JSON;
+import com.overstar.commonbase.bean.EnumCode;
+import com.overstar.commonbase.exception.ExceptionElasticSearch;
+import com.overstar.commonbase.exception.ExceptionProduct;
 import com.overstar.elasticsearch.constant.ProductSearchConstant;
 import org.elasticsearch.action.admin.indices.alias.get.GetAliasesResponse;
 import org.elasticsearch.action.admin.indices.get.GetIndexResponse;
@@ -10,14 +14,14 @@ import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.cluster.metadata.AliasMetaData;
 import org.elasticsearch.common.collect.ImmutableOpenMap;
 import org.elasticsearch.common.xcontent.XContentType;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Description
@@ -26,6 +30,11 @@ import java.util.List;
  */
 @Component
 public class ElasticsearchOpService {
+
+    public static final Logger log = LoggerFactory.getLogger("run");
+
+    @Value("${elasticsearch.conf.setting.name}")
+    private String configJsonFileName;
 
     @Autowired
     private TransportClient transportClient;
@@ -81,8 +90,22 @@ public class ElasticsearchOpService {
      * 创建索引，索引名自己指定
      */
     public void createIndex(String index) {
-        transportClient.admin().indices().prepareCreate(index).setSettings(ProductSearchConstant.Index.SETTINGS, XContentType.JSON)
-                .addMapping(ProductSearchConstant.TYPE, ProductSearchConstant.Index.MAPPINGS, XContentType.JSON).execute().actionGet();
+        Map configJson = getConfigJson(configJsonFileName);
+        if (StringUtils.isEmpty(configJson)){
+            throw new ExceptionElasticSearch(EnumCode.EXCEPTION.getCode(),"瓦了，没找到json配置文件信息...");
+        }
+        log.info("-----------> init index by json config is starting....");
+        transportClient.admin().indices().prepareCreate(index).setSettings(JSON.toJSONString(configJson.get("settings")), XContentType.JSON)
+                .addMapping(ProductSearchConstant.TYPE,  JSON.toJSONString(configJson.get("mappings")), XContentType.JSON).execute().actionGet();
+    }
+
+    /**
+     * 获取配置json文件
+     * @param configJsonFileName
+     * @return
+     */
+    public Map getConfigJson(String configJsonFileName) {
+        return (Map) JSONHelper.resolveJsonFileToObject(configJsonFileName);
     }
 
 
