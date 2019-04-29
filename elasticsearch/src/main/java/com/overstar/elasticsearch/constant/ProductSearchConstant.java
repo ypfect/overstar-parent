@@ -21,6 +21,7 @@ public interface ProductSearchConstant {
     float MIN_SCORE = 500f;
     String TYPE = "_doc";
     String INDEX_OVERSTAR = "overstar";
+    String INDEX_YPFECT = "ypfect";
 
 
     // ~ es-settings & mapping

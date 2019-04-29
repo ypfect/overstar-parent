@@ -104,8 +104,8 @@
 			    },
 			    "productNameEn" : {
 					"type" :   "text",
-					"analyzer": "letter",
-					"search_analyzer": "letter"
+					"analyzer": "standard",
+					"search_analyzer": "standard"
 			    },
 			    "productNameEnNotAnalyzed" : {
 					"type" :   "keyword",

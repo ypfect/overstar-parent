@@ -33,9 +33,6 @@ public class ElasticsearchOpService {
 
     public static final Logger log = LoggerFactory.getLogger("run");
 
-    @Value("${elasticsearch.conf.setting.name}")
-    private String configJsonFileName;
-
     @Autowired
     private TransportClient transportClient;
 
@@ -89,8 +86,8 @@ public class ElasticsearchOpService {
     /**
      * 创建索引，索引名自己指定
      */
-    public void createIndex(String index) {
-        Map configJson = getConfigJson(configJsonFileName);
+    public void createIndex(String index,String config) {
+        Map configJson = getConfigJson(config);
         if (StringUtils.isEmpty(configJson)){
             throw new ExceptionElasticSearch(EnumCode.EXCEPTION.getCode(),"瓦了，没找到json配置文件信息...");
         }
