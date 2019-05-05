@@ -6,16 +6,29 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="auth-center" />
-        <module name="common-base" />
-        <module name="config-server" />
-        <module name="elasticsearch" />
-        <module name="eureka-server" />
         <module name="feign-center" />
+        <module name="common-base" />
+        <module name="auth-center" />
+        <module name="eureka-server" />
+        <module name="elasticsearch" />
         <module name="service-product" />
+        <module name="config-server" />
         <module name="user-center" />
         <module name="zuul-gateway" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="auth-center" options="-parameters" />
+      <module name="common-base" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="elasticsearch" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="feign-center" options="-parameters" />
+      <module name="service-product" options="-parameters" />
+      <module name="user-center" options="-parameters" />
+      <module name="zuul-gateway" options="-parameters" />
+    </option>
   </component>
 </project>
