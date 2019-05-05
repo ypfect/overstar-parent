@@ -22,7 +22,7 @@ public class AfterApplicationStarted implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         logger.info("application is ready...");
-        searchService.initEsIndex();
+//        searchService.initEsIndex();
 
     }
 }

@@ -15,10 +15,10 @@ public class JSONHelper {
     public static final Logger log = LoggerFactory.getLogger("run");
 
     public static void main(String[] args) {
-        String s =resolveJsonFileToString("es.json");
+        String s =resolveJsonFileToString("ypfect.json");
         System.out.println("sss="+s);
 
-        Map map = (Map) resolveJsonFileToObject("es.json");
+        Map map = (Map) resolveJsonFileToObject("ypfect.json");
         System.out.println("map="+map.get("mappings"));
     }
 

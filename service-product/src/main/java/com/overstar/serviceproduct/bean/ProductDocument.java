@@ -3,7 +3,6 @@ package com.overstar.serviceproduct.bean;
 import java.io.Serializable;
 
 public class ProductDocument implements Serializable {
-	private static final long serialVersionUID = -2549139565527611835L;
 	//产品ID
 	private String productId;
 	// 对应产品名称,中文模糊匹配字段（与查询条件中的searchKey匹配）

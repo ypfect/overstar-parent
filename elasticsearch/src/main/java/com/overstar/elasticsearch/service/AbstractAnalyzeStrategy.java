@@ -21,7 +21,7 @@ public abstract class AbstractAnalyzeStrategy implements AnalyzeFieldInterface{
 
     protected AnalyzeRequestBuilder initAnalyzeRequestBuilder(){
         AnalyzeRequestBuilder requestBuilder = new AnalyzeRequestBuilder(transportClient,AnalyzeAction.INSTANCE);
-        requestBuilder.setIndex(ProductSearchConstant.INDEX_YPFECT);
+        requestBuilder.setIndex(ProductSearchConstant.INDEX_OVERSTAR);
         return requestBuilder;
     }
 
