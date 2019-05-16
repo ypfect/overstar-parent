@@ -15,4 +15,5 @@ import java.util.List;
 public interface ProductDocumentMapper extends Mapper<ProductDocument>, MySqlMapper<ProductDocument> {
 
     List<ProductDocument> loadGoodsResource(ProductQuery productQuery);
+    List<ProductDocument> loadGoodsResourceByProductIds(List<Integer> productIds);
 }

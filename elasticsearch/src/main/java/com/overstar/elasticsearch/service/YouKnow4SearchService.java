@@ -1,8 +1,11 @@
 package com.overstar.elasticsearch.service;
 
 import com.github.promeg.pinyinhelper.Pinyin;
+import com.google.common.collect.Lists;
 import com.overstar.elasticsearch.bean.ProductDocument;
 import com.overstar.elasticsearch.constant.ProductSearchConstant;
+import com.overstar.elasticsearch.mapper.common.ProductDocumentMapper;
+import com.overstar.elasticsearch.mapper.product.ProductBaseMapper;
 import com.overstar.elasticsearch.service.InitializationService.InitElasticsearchDataService;
 import com.overstar.elasticsearch.utils.BeanUtils;
 import com.overstar.elasticsearch.utils.ESStringUtil;
@@ -22,6 +25,7 @@ import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * @Description
@@ -40,6 +44,10 @@ public class YouKnow4SearchService {
 
     @Autowired
     private ElasticsearchOpService opService;
+    @Autowired
+    private ProductBaseMapper productBaseMapper;
+    @Autowired
+    private ProductDocumentMapper documentMapper;
     @Autowired
     private InitElasticsearchDataService initElasticsearchDataService;
 
@@ -63,10 +71,14 @@ public class YouKnow4SearchService {
             logger.info("new index ypfect name is {}",ypfect);
             //给新索引批量插入数据
             bulkProcessor = opService.createBulkProcessor();
-            for (ProductDocument document : productDocuments) {
-                bulkProcessor.add(new IndexRequest(overstar, ProductSearchConstant.TYPE, document.getProductId()).source(getJsonMap(document, false)));
-                bulkProcessor.add(new  IndexRequest(ypfect,ProductSearchConstant.TYPE,document.getProductId()).source(loadDocumentMap(document)));
-            }
+
+            //分页查询文档数据进行处理
+            prepareBaseProductInfo2ProductDocByPartition(overstar,ypfect,bulkProcessor);
+
+//            for (ProductDocument document : productDocuments) {
+//                bulkProcessor.add(new IndexRequest(overstar, ProductSearchConstant.TYPE, document.getProductId()).source(getJsonMap(document, false)));
+//                bulkProcessor.add(new  IndexRequest(ypfect,ProductSearchConstant.TYPE,document.getProductId()).source(loadDocumentMap(document)));
+//            }
             bulkProcessor.flush();
             if (!CollectionUtils.isEmpty(oldIndex)){
                 String[] oldIndexes = oldIndex.toArray(new String[]{});
@@ -91,6 +103,24 @@ public class YouKnow4SearchService {
         }
 
     }
+
+    /**
+     * 分片查询,还是需要api的配合查询
+     * @param bulkProcessor
+     */
+    public void prepareBaseProductInfo2ProductDocByPartition(String overstar,String ypfect,BulkProcessor bulkProcessor){
+        List<Integer> allProductIds = productBaseMapper.getAllProductIds();
+        List<List<Integer>> partition = Lists.partition(allProductIds, 200);//分割list
+        partition.stream().forEach(par->{
+            //根据list查询
+            List<ProductDocument> productDocuments = documentMapper.loadGoodsResourceByProductIds(par);
+            productDocuments.stream().forEach(doc->
+                    bulkProcessor.add(new IndexRequest(overstar, ProductSearchConstant.TYPE,doc.getProductId()).source(getJsonMap(doc,false))));
+            productDocuments.stream().forEach(doc->
+                    bulkProcessor.add(new IndexRequest(ypfect, ProductSearchConstant.TYPE,doc.getProductId()).source(loadDocumentMap(doc))));
+        });
+    }
+
 
     /**
      * myself document init
@@ -135,9 +165,17 @@ public class YouKnow4SearchService {
 
 
     public static void main(String[] args) {
-        String SS = "我的欧安徽";
-        String s = Pinyin.toPinyin(SS, "");
-        System.out.println(s);
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        integers.add(4);
+        integers.add(5);
+        integers.add(6);
+        integers.add(7);
+        integers.add(8);
+        List<List<Integer>> partition = Lists.partition(integers, 2);
+        System.out.println(partition);
     }
 
 

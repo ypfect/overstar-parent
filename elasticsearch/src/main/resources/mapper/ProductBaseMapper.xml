@@ -27,4 +27,10 @@
     <result column="source_id" jdbcType="VARCHAR" property="sourceId" />
     <result column="city_ids" jdbcType="LONGVARCHAR" property="cityIds" />
   </resultMap>
+    <select id="getProductBaseTotal" resultType="java.lang.Integer">
+       select count(1) from product_base;
+    </select>
+  <select id="getAllProductIds" resultType="java.lang.Integer">
+    select product_id from product_base;
+  </select>
 </mapper>
