@@ -11,7 +11,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class,DruidDataSourceAutoConfigure.class, HibernateJpaAutoConfiguration.class })
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
 @EnableFeignClients//启动Feign
 @EnableEurekaClient
 @EnableDiscoveryClient//开启消费端获取list

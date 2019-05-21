@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka1:8080/eureka/
+      defaultZone: http://localhost:8080/eureka/
 spring:
   application:
     name: PRODUCT-SERVICE
@@ -16,6 +16,10 @@ spring:
       initial-size: 3
       max-active: 5
       min-idle: 3
+  boot:
+    admin:
+      client:
+        url: http://localhost:9876
 
 mybatis:
     mapper-locations: classpath:/mapper/*Mapper.xml
@@ -28,3 +32,12 @@ pagehelper:
     offsetAsPageNum: true
     rowBoundsWithCount: true
     reasonable: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

@@ -6,15 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="auth-center" />
-        <module name="common-base" />
-        <module name="config-server" />
-        <module name="elasticsearch" />
-        <module name="eureka-server" />
         <module name="feign-center" />
-        <module name="service-product" />
-        <module name="user-center" />
+        <module name="common-base" />
+        <module name="auth-center" />
         <module name="zuul-gateway" />
+        <module name="eureka-server" />
+        <module name="service-product" />
+        <module name="config-server" />
+        <module name="user-center" />
+        <module name="elasticsearch" />
       </profile>
     </annotationProcessing>
   </component>
